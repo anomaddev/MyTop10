@@ -6,8 +6,6 @@ enum AuthError: LocalizedError {
     case notConfigured
     case invalidPhone
     case missingVerification
-    case weakPassword
-    case passwordMismatch
     case usernameTaken
     case profileIncomplete
     case unknown(String)
@@ -17,8 +15,6 @@ enum AuthError: LocalizedError {
         case .notConfigured: return "Firebase is not configured. Add GoogleService-Info.plist."
         case .invalidPhone: return "Enter a valid phone number with country code."
         case .missingVerification: return "Start phone verification again."
-        case .weakPassword: return "Password does not meet all requirements."
-        case .passwordMismatch: return "Passwords do not match."
         case .usernameTaken: return "That username is already taken."
         case .profileIncomplete: return "Finish setting up your profile."
         case .unknown(let message): return message
@@ -96,49 +92,6 @@ final class AuthService: ObservableObject {
             let result = try await Auth.auth().signIn(with: credential)
             user = result.user
             // Force-refresh so Cloud Function / blocking function role claim is present.
-            _ = try await result.user.getIDTokenResult(forcingRefresh: true)
-        } catch {
-            errorMessage = error.localizedDescription
-            throw AuthError.unknown(error.localizedDescription)
-        }
-    }
-
-    func linkPassword(_ password: String) async throws {
-        guard let user, let phone = pendingPhoneE164 ?? user.phoneNumber else {
-            throw AuthError.missingVerification
-        }
-        let email = AppConfig.passwordEmail(forPhoneE164: phone)
-        isLoading = true
-        defer { isLoading = false }
-        do {
-            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-            _ = try await user.link(with: credential)
-            try await user.reload()
-            self.user = Auth.auth().currentUser
-            _ = try await Auth.auth().currentUser?.getIDTokenResult(forcingRefresh: true)
-        } catch {
-            // If already linked (re-running setup), update password instead.
-            let code = AuthErrorCode(rawValue: (error as NSError).code)
-            if code == .credentialAlreadyInUse || code == .emailAlreadyInUse {
-                try await user.updatePassword(to: password)
-                return
-            }
-            errorMessage = error.localizedDescription
-            throw AuthError.unknown(error.localizedDescription)
-        }
-    }
-
-    func signIn(phone rawPhone: String, password: String) async throws {
-        guard FirebaseApp.app() != nil else { throw AuthError.notConfigured }
-        guard let phone = normalizedPhone(rawPhone) else { throw AuthError.invalidPhone }
-        isLoading = true
-        errorMessage = nil
-        defer { isLoading = false }
-        let email = AppConfig.passwordEmail(forPhoneE164: phone)
-        do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            user = result.user
-            pendingPhoneE164 = phone
             _ = try await result.user.getIDTokenResult(forcingRefresh: true)
         } catch {
             errorMessage = error.localizedDescription

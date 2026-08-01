@@ -6,30 +6,14 @@ struct ProfileSetupView: View {
 
     @State private var fullName = ""
     @State private var username = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
     @State private var selectedItem: PhotosPickerItem?
     @State private var avatarImage: UIImage?
     @State private var error: String?
     @State private var isSaving = false
 
-    private var requirements: [PasswordRequirement] {
-        PasswordValidator.requirements(
-            password: password,
-            username: username,
-            phone: session.auth.pendingPhoneE164 ?? session.auth.user?.phoneNumber ?? ""
-        )
-    }
-
     private var canSubmit: Bool {
         !fullName.trimmingCharacters(in: .whitespaces).isEmpty
             && username.count >= 3
-            && password == confirmPassword
-            && PasswordValidator.isStrong(
-                password,
-                username: username,
-                phone: session.auth.pendingPhoneE164 ?? ""
-            )
             && !isSaving
     }
 
@@ -45,7 +29,7 @@ struct ProfileSetupView: View {
                         .font(.custom("AvenirNext-Bold", size: 28))
                         .foregroundStyle(Theme.ink)
 
-                    Text("Add a face, a name, and a strong password to lock in your account.")
+                    Text("Add a face, your name, and a username so friends can find your Top 10s.")
                         .font(.custom("AvenirNext-Regular", size: 16))
                         .foregroundStyle(Theme.mutedText)
 
@@ -88,25 +72,6 @@ struct ProfileSetupView: View {
                     .onChange(of: username) { _, value in
                         username = value.lowercased().filter { $0.isLetter || $0.isNumber || $0 == "_" }
                     }
-                    AppTextField(
-                        title: "Password",
-                        text: $password,
-                        textContentType: .newPassword,
-                        isSecure: true
-                    )
-                    PasswordRequirementsView(requirements: requirements)
-                    AppTextField(
-                        title: "Confirm password",
-                        text: $confirmPassword,
-                        textContentType: .newPassword,
-                        isSecure: true
-                    )
-
-                    if password != confirmPassword && !confirmPassword.isEmpty {
-                        Text("Passwords do not match")
-                            .font(.custom("AvenirNext-Medium", size: 13))
-                            .foregroundStyle(Theme.coral)
-                    }
 
                     if let error {
                         ErrorBanner(message: error)
@@ -129,14 +94,6 @@ struct ProfileSetupView: View {
             error = AuthError.notConfigured.localizedDescription
             return
         }
-        guard password == confirmPassword else {
-            error = AuthError.passwordMismatch.localizedDescription
-            return
-        }
-        guard PasswordValidator.isStrong(password, username: username, phone: session.auth.pendingPhoneE164 ?? "") else {
-            error = AuthError.weakPassword.localizedDescription
-            return
-        }
 
         isSaving = true
         defer { isSaving = false }
@@ -144,8 +101,6 @@ struct ProfileSetupView: View {
         do {
             let available = try await session.profiles.isUsernameAvailable(username, excluding: uid)
             guard available else { throw AuthError.usernameTaken }
-
-            try await session.auth.linkPassword(password)
 
             var avatarURL: String?
             if let avatarImage {

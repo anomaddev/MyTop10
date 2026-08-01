@@ -275,12 +275,6 @@ struct Follow: Identifiable, Codable, Equatable {
     }
 }
 
-struct PasswordRequirement: Identifiable {
-    let id = UUID()
-    let label: String
-    let isMet: Bool
-}
-
 enum OnboardingStep: Int, CaseIterable {
     case welcome
     case phone

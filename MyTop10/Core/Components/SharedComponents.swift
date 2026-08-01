@@ -45,27 +45,6 @@ struct AppTextField: View {
     }
 }
 
-struct PasswordRequirementsView: View {
-    let requirements: [PasswordRequirement]
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            ForEach(requirements) { req in
-                HStack(spacing: 10) {
-                    Image(systemName: req.isMet ? "checkmark.circle.fill" : "circle")
-                        .foregroundStyle(req.isMet ? Theme.lagoon : Theme.mutedText.opacity(0.5))
-                        .symbolEffect(.bounce, value: req.isMet)
-                    Text(req.label)
-                        .font(.custom("AvenirNext-Regular", size: 14))
-                        .foregroundStyle(req.isMet ? Theme.ink : Theme.mutedText)
-                }
-                .animation(.easeInOut(duration: 0.2), value: req.isMet)
-            }
-        }
-        .padding(.top, 4)
-    }
-}
-
 struct ProfileBubble: View {
     let profile: Profile?
     var size: CGFloat = 36

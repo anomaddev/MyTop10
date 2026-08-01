@@ -51,9 +51,8 @@ struct WelcomeView: View {
                     .buttonStyle(PrimaryButtonStyle())
 
                     Button("Sign In") {
-                        withAnimation {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
                             session.advanceOnboarding(to: .phone)
-                            // Sign-in uses the same phone entry with a mode flag via AuthSignInView later.
                         }
                     }
                     .buttonStyle(PrimaryButtonStyle(filled: false))

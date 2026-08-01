@@ -35,16 +35,6 @@ enum AppConfig {
         string("ADMOB_INTERSTITIAL_UNIT_ID") ?? "ca-app-pub-3940256099942544/4411468910"
     }
 
-    static var passwordEmailDomain: String {
-        string("PASSWORD_EMAIL_DOMAIN") ?? "users.mytop10.app"
-    }
-
-    /// Synthetic email used to attach Email/Password to a phone-authenticated Firebase user.
-    static func passwordEmail(forPhoneE164 phone: String) -> String {
-        let digits = phone.filter(\.isNumber)
-        return "phone+\(digits)@\(passwordEmailDomain)"
-    }
-
     private static func string(_ key: String) -> String? {
         guard let value = plist[key] as? String, !value.isEmpty, !value.contains("YOUR_") else {
             return nil

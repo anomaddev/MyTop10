@@ -7,155 +7,152 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		250B7C663AA84E788C626E3C /* MainTabView.swift in Build */ = {isa = PBXBuildFile; fileRef = 51E0A999C35545AB8ACB57F8 /* MainTabView.swift */; };
-		91885CF7A6C74B5EA8F66E32 /* MyTop10App.swift in Build */ = {isa = PBXBuildFile; fileRef = F9493337DD034BD7BA873B49 /* MyTop10App.swift */; };
-		3C7529A3EE9C4E1488C36906 /* RootView.swift in Build */ = {isa = PBXBuildFile; fileRef = 1797596CB5D949358AD9FA2A /* RootView.swift */; };
-		8366A6A9148E4DFA8760ADDB /* AppSession.swift in Build */ = {isa = PBXBuildFile; fileRef = 2D5D1BD4536B46EC83B94386 /* AppSession.swift */; };
-		4063E59B42AA4B4797A9A750 /* AuthService.swift in Build */ = {isa = PBXBuildFile; fileRef = 7A9BFCF727C541CBBD8413C3 /* AuthService.swift */; };
-		A38B19FAC70C4118BC1B2E4F /* PasswordValidator.swift in Build */ = {isa = PBXBuildFile; fileRef = A2F5810E7747444C800531F3 /* PasswordValidator.swift */; };
-		65DFA003FB6D498DAE7D32C2 /* ListItemComponents.swift in Build */ = {isa = PBXBuildFile; fileRef = 96912B7A5AD44D559130851B /* ListItemComponents.swift */; };
-		43EEAEF192EA481E88027990 /* SharedComponents.swift in Build */ = {isa = PBXBuildFile; fileRef = DAEDFAE38169415098323188 /* SharedComponents.swift */; };
-		10CCB1EDFCA9451E849E31D6 /* AppConfig.swift in Build */ = {isa = PBXBuildFile; fileRef = E89DC34167C244DCAB09470B /* AppConfig.swift */; };
-		18E7AB5502E94180B74F831D /* Models.swift in Build */ = {isa = PBXBuildFile; fileRef = F3F29D32D78241FAA1C116E7 /* Models.swift */; };
-		AB6EF028E6BD44D3A816004D /* AdMobService.swift in Build */ = {isa = PBXBuildFile; fileRef = A702B1C756D3429EBBBDC6ED /* AdMobService.swift */; };
-		A1098F3121524F59AB08DBFB /* LocationPermissionService.swift in Build */ = {isa = PBXBuildFile; fileRef = A7830D206E3641D894BF72E8 /* LocationPermissionService.swift */; };
-		C9FEA8C2D57E494A9982F044 /* ProfileService.swift in Build */ = {isa = PBXBuildFile; fileRef = 36D66188D73B42098C34979B /* ProfileService.swift */; };
-		8663EBE74AE746F893CDEAAE /* SupabaseManager.swift in Build */ = {isa = PBXBuildFile; fileRef = B98E7B1074564106A03E0108 /* SupabaseManager.swift */; };
-		246CEB2A05204DB4A2D6208A /* TopTenService.swift in Build */ = {isa = PBXBuildFile; fileRef = F1EE503FD83F4C6980B531AC /* TopTenService.swift */; };
-		B151B45CB56849489BD95FEB /* Theme.swift in Build */ = {isa = PBXBuildFile; fileRef = 207DEC7BC9844A3682DCDFF1 /* Theme.swift */; };
-		919A32D98312412C8384D59E /* CategoriesView.swift in Build */ = {isa = PBXBuildFile; fileRef = BAF94C4477EE40618F3923E9 /* CategoriesView.swift */; };
-		4EFF6D55841A4D84B799D6E8 /* CreateTopTenView.swift in Build */ = {isa = PBXBuildFile; fileRef = 0A21AF175FD54CC982EDB20A /* CreateTopTenView.swift */; };
-		0CFB1563092E4A51BD11AA64 /* DiscoverView.swift in Build */ = {isa = PBXBuildFile; fileRef = D542C6175DD04771BDBAB95E /* DiscoverView.swift */; };
-		A180C8EC2F414637BD5E11C1 /* ItemEditorView.swift in Build */ = {isa = PBXBuildFile; fileRef = 183CFEA3152F421885D26762 /* ItemEditorView.swift */; };
-		12F8A33ACB7E450CA25AFCBB /* ListSettingsSheet.swift in Build */ = {isa = PBXBuildFile; fileRef = 34A201B57BBF45E6B042631C /* ListSettingsSheet.swift */; };
-		3956798DF1044A8BB93AF7BB /* MyListsView.swift in Build */ = {isa = PBXBuildFile; fileRef = 3B2E662D1D4A4AB5B2E20EE2 /* MyListsView.swift */; };
-		8BA22E02043E4AC79FB7F64F /* TopTenDetailView.swift in Build */ = {isa = PBXBuildFile; fileRef = 7365FA0945024CD5A6491278 /* TopTenDetailView.swift */; };
-		5744B0F48E22410CBD521353 /* LocationPickerView.swift in Build */ = {isa = PBXBuildFile; fileRef = FEC7D7DB7B7D4685ADEE6BFF /* LocationPickerView.swift */; };
-		50A18A9D382D484C8156FD27 /* OTPVerifyView.swift in Build */ = {isa = PBXBuildFile; fileRef = 1EDA420D733F40788AC27E5A /* OTPVerifyView.swift */; };
-		EAFC16093F4740DFBE0B0D20 /* OnboardingFlowView.swift in Build */ = {isa = PBXBuildFile; fileRef = C85D2156D9D64D10B18ED693 /* OnboardingFlowView.swift */; };
-		B05F1FD62DAC4EA8884A087D /* PermissionsView.swift in Build */ = {isa = PBXBuildFile; fileRef = E3777EC8A53946628229F479 /* PermissionsView.swift */; };
-		B3571B48651C40E7930F1297 /* PhoneEntryView.swift in Build */ = {isa = PBXBuildFile; fileRef = B615721750394397BDEF186B /* PhoneEntryView.swift */; };
-		942BEFFA2D6D4D33A593393D /* ProfileSetupView.swift in Build */ = {isa = PBXBuildFile; fileRef = FFA908266AB7428294DE6E70 /* ProfileSetupView.swift */; };
-		0A51475D6AE644ADBE953873 /* WelcomeView.swift in Build */ = {isa = PBXBuildFile; fileRef = 8F93DD14A11940B6926BCDF1 /* WelcomeView.swift */; };
-		2C62DF4BDE3A4103AC7B8A80 /* ProfileView.swift in Build */ = {isa = PBXBuildFile; fileRef = E72B71822FD44E998DCEBB5A /* ProfileView.swift */; };
-		3AE7AAFBD84B436B85513603 /* Info.plist in Build */ = {isa = PBXBuildFile; fileRef = D3AEFE39BED24B4AB34492AC /* Info.plist */; };
-		B0415A7A6BD84AAABB74E8D5 /* Config.plist in Build */ = {isa = PBXBuildFile; fileRef = 46FC6CFD154041FC9CE8E78A /* Config.plist */; };
-		66723FF79D514A1080206BAD /* Config.example.plist in Build */ = {isa = PBXBuildFile; fileRef = F07F4F512AF849718F6C694B /* Config.example.plist */; };
-		86FAE544610E464B98AC06AE /* Assets.xcassets in Build */ = {isa = PBXBuildFile; fileRef = A7498FE1C12B4D31AD296310 /* Assets.xcassets */; };
-		B25C67DFF6AF4366B62C7D25 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4063C30D372C4B63A12773ED /* FirebaseAuth */; };
-		8EC8EE8917E94AF79C4F12EB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F91E113CD214B01BBC142D9 /* FirebaseCore */; };
-		229F1619F889476B9A78053D /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = ABD62CEBA707414391ECA0EB /* Supabase */; };
-		6BBB536B8E0E4C989223E972 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 53B02036CD254C4B9679D2AF /* GoogleMobileAds */; };
+		4B9464F7D5D2436C9191317D /* MainTabView.swift in Build */ = {isa = PBXBuildFile; fileRef = 5773FF05210F48C19C21FACA /* MainTabView.swift */; };
+		058329A0DD5447BD992FA67B /* MyTop10App.swift in Build */ = {isa = PBXBuildFile; fileRef = BE38C82778A34F4BB366EFCB /* MyTop10App.swift */; };
+		155F65A60171443A8D87273F /* RootView.swift in Build */ = {isa = PBXBuildFile; fileRef = 15D7AC6DDADE43CB8E230F96 /* RootView.swift */; };
+		89CCAACF151F49D5A1CD3C51 /* AppSession.swift in Build */ = {isa = PBXBuildFile; fileRef = F58ACD967D2941F885A323AC /* AppSession.swift */; };
+		86019C25904B4872966351EA /* AuthService.swift in Build */ = {isa = PBXBuildFile; fileRef = 3D2FC144884D442989E926E5 /* AuthService.swift */; };
+		089254491CA848598B622528 /* ListItemComponents.swift in Build */ = {isa = PBXBuildFile; fileRef = C5B42B0E86584557B424DFEF /* ListItemComponents.swift */; };
+		7A02F8ABCF6840BFB852B543 /* SharedComponents.swift in Build */ = {isa = PBXBuildFile; fileRef = 1F60BC9AE6C7441C95D063D0 /* SharedComponents.swift */; };
+		FF4D751C79FB47A1B8001A06 /* AppConfig.swift in Build */ = {isa = PBXBuildFile; fileRef = 5FB0450846164A5C9F729EEC /* AppConfig.swift */; };
+		74637F4BD72D45B8A312C96B /* Models.swift in Build */ = {isa = PBXBuildFile; fileRef = 05A2F095C9334A9BBABCC418 /* Models.swift */; };
+		24590E6930DF4CE38D54005D /* AdMobService.swift in Build */ = {isa = PBXBuildFile; fileRef = 6B1566A54AA340C4BD71AF9E /* AdMobService.swift */; };
+		350D56516C1D4ACFA9D3461C /* LocationPermissionService.swift in Build */ = {isa = PBXBuildFile; fileRef = DA14C1F1DDCB4ADFA0537D50 /* LocationPermissionService.swift */; };
+		F6E35B726D1B40BAA4E5B594 /* ProfileService.swift in Build */ = {isa = PBXBuildFile; fileRef = 040C2093AAA9483E83F0F81F /* ProfileService.swift */; };
+		5715610CC73C4C87818256D2 /* SupabaseManager.swift in Build */ = {isa = PBXBuildFile; fileRef = AC446DF64B2E4ADBBF72D1A7 /* SupabaseManager.swift */; };
+		D9939578AAD04003A6CB3D50 /* TopTenService.swift in Build */ = {isa = PBXBuildFile; fileRef = 0D557B9877D64452B7736158 /* TopTenService.swift */; };
+		6F32460116FE433982E771AA /* Theme.swift in Build */ = {isa = PBXBuildFile; fileRef = 71737DB14047411080588E17 /* Theme.swift */; };
+		609A9BC932C74428A2B6801B /* CategoriesView.swift in Build */ = {isa = PBXBuildFile; fileRef = 89C6D9590AFA44B1A3A0124F /* CategoriesView.swift */; };
+		860913CFD0B548D9ADB5576B /* CreateTopTenView.swift in Build */ = {isa = PBXBuildFile; fileRef = B3C7495D64E348BF831BA2BD /* CreateTopTenView.swift */; };
+		7D3B039DF95D4C7FAEB184DD /* DiscoverView.swift in Build */ = {isa = PBXBuildFile; fileRef = 577546AAA0F54A62969EBE8E /* DiscoverView.swift */; };
+		B5790416174045BDAF8BD7A7 /* ItemEditorView.swift in Build */ = {isa = PBXBuildFile; fileRef = BABB812F029F415CB2875405 /* ItemEditorView.swift */; };
+		93903CADC93842D4B2EF2C36 /* ListSettingsSheet.swift in Build */ = {isa = PBXBuildFile; fileRef = 9AC97C8F31C542B580097EEE /* ListSettingsSheet.swift */; };
+		E13055F536624697A265CA34 /* MyListsView.swift in Build */ = {isa = PBXBuildFile; fileRef = 3A0B9A4A040C4283A10423E5 /* MyListsView.swift */; };
+		5228DF8C6CEC41239ABC1C50 /* TopTenDetailView.swift in Build */ = {isa = PBXBuildFile; fileRef = AF2745486D5D47869E87020A /* TopTenDetailView.swift */; };
+		12389BB3AF7844BB9E0608A9 /* LocationPickerView.swift in Build */ = {isa = PBXBuildFile; fileRef = 9579F5FF917D4EA991575E8C /* LocationPickerView.swift */; };
+		552DB45A3031425F8A71554B /* OTPVerifyView.swift in Build */ = {isa = PBXBuildFile; fileRef = B9D2B6381B04462788147013 /* OTPVerifyView.swift */; };
+		FE5770F03901416084D0A094 /* OnboardingFlowView.swift in Build */ = {isa = PBXBuildFile; fileRef = 4828B36855C548F7B81242BE /* OnboardingFlowView.swift */; };
+		2A299561277042DBAA9A61AD /* PermissionsView.swift in Build */ = {isa = PBXBuildFile; fileRef = 37410CF8F2664706A4156CC5 /* PermissionsView.swift */; };
+		74410531E82D44A5BF6E282D /* PhoneEntryView.swift in Build */ = {isa = PBXBuildFile; fileRef = AC594729E7A04087AC5140CD /* PhoneEntryView.swift */; };
+		A89A809FDCF447B99ED006AA /* ProfileSetupView.swift in Build */ = {isa = PBXBuildFile; fileRef = 2C0B494EC7E240F59DC1ED2B /* ProfileSetupView.swift */; };
+		AFA5CB7425C94C95B00600C3 /* WelcomeView.swift in Build */ = {isa = PBXBuildFile; fileRef = 243C3CF8CF9A4EC581FD89FD /* WelcomeView.swift */; };
+		3DDC434C6DE24D6993F77571 /* ProfileView.swift in Build */ = {isa = PBXBuildFile; fileRef = 44197E94B43049C0BF005343 /* ProfileView.swift */; };
+		962D9E334E0443E79D8F9308 /* Info.plist in Build */ = {isa = PBXBuildFile; fileRef = 768334E151194180875F91B6 /* Info.plist */; };
+		3263664FEEDF4C7681024003 /* Config.plist in Build */ = {isa = PBXBuildFile; fileRef = 2B4BDC0A7445445A94E39067 /* Config.plist */; };
+		434356FE6A0047118C01BB38 /* Config.example.plist in Build */ = {isa = PBXBuildFile; fileRef = FE5D1FF7C6FE4BE185DDD72E /* Config.example.plist */; };
+		F7D42949E8E240B8A2CF1155 /* Assets.xcassets in Build */ = {isa = PBXBuildFile; fileRef = 71BCEF2F1823408AADD21FDB /* Assets.xcassets */; };
+		2A2B7F7CF16743B9B59DB871 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8401613F4CB341EA8A390C17 /* FirebaseAuth */; };
+		80723589815E48A59039358D /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 27EB4604A3974B958CFB5B6A /* FirebaseCore */; };
+		CDC44852E79C4744AD7E147F /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 42D66E11A3F84CA0AB719A9A /* Supabase */; };
+		A332C3D1AE854F688D637060 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 48AB05B809FD49BFA36630DC /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A16CAFA614EE409DB00D0E7C /* MyTop10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTop10.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		51E0A999C35545AB8ACB57F8 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/MainTabView.swift; sourceTree = SOURCE_ROOT; };
-		F9493337DD034BD7BA873B49 /* MyTop10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/MyTop10App.swift; sourceTree = SOURCE_ROOT; };
-		1797596CB5D949358AD9FA2A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/RootView.swift; sourceTree = SOURCE_ROOT; };
-		2D5D1BD4536B46EC83B94386 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Auth/AppSession.swift; sourceTree = SOURCE_ROOT; };
-		7A9BFCF727C541CBBD8413C3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Auth/AuthService.swift; sourceTree = SOURCE_ROOT; };
-		A2F5810E7747444C800531F3 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Auth/PasswordValidator.swift; sourceTree = SOURCE_ROOT; };
-		96912B7A5AD44D559130851B /* ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Components/ListItemComponents.swift; sourceTree = SOURCE_ROOT; };
-		DAEDFAE38169415098323188 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Components/SharedComponents.swift; sourceTree = SOURCE_ROOT; };
-		E89DC34167C244DCAB09470B /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Config/AppConfig.swift; sourceTree = SOURCE_ROOT; };
-		F3F29D32D78241FAA1C116E7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Models/Models.swift; sourceTree = SOURCE_ROOT; };
-		A702B1C756D3429EBBBDC6ED /* AdMobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/AdMobService.swift; sourceTree = SOURCE_ROOT; };
-		A7830D206E3641D894BF72E8 /* LocationPermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/LocationPermissionService.swift; sourceTree = SOURCE_ROOT; };
-		36D66188D73B42098C34979B /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/ProfileService.swift; sourceTree = SOURCE_ROOT; };
-		B98E7B1074564106A03E0108 /* SupabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/SupabaseManager.swift; sourceTree = SOURCE_ROOT; };
-		F1EE503FD83F4C6980B531AC /* TopTenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/TopTenService.swift; sourceTree = SOURCE_ROOT; };
-		207DEC7BC9844A3682DCDFF1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Theme/Theme.swift; sourceTree = SOURCE_ROOT; };
-		BAF94C4477EE40618F3923E9 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Categories/CategoriesView.swift; sourceTree = SOURCE_ROOT; };
-		0A21AF175FD54CC982EDB20A /* CreateTopTenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Create/CreateTopTenView.swift; sourceTree = SOURCE_ROOT; };
-		D542C6175DD04771BDBAB95E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Discover/DiscoverView.swift; sourceTree = SOURCE_ROOT; };
-		183CFEA3152F421885D26762 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/ItemEditorView.swift; sourceTree = SOURCE_ROOT; };
-		34A201B57BBF45E6B042631C /* ListSettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/ListSettingsSheet.swift; sourceTree = SOURCE_ROOT; };
-		3B2E662D1D4A4AB5B2E20EE2 /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/MyListsView.swift; sourceTree = SOURCE_ROOT; };
-		7365FA0945024CD5A6491278 /* TopTenDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/TopTenDetailView.swift; sourceTree = SOURCE_ROOT; };
-		FEC7D7DB7B7D4685ADEE6BFF /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Map/LocationPickerView.swift; sourceTree = SOURCE_ROOT; };
-		1EDA420D733F40788AC27E5A /* OTPVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/OTPVerifyView.swift; sourceTree = SOURCE_ROOT; };
-		C85D2156D9D64D10B18ED693 /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/OnboardingFlowView.swift; sourceTree = SOURCE_ROOT; };
-		E3777EC8A53946628229F479 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/PermissionsView.swift; sourceTree = SOURCE_ROOT; };
-		B615721750394397BDEF186B /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/PhoneEntryView.swift; sourceTree = SOURCE_ROOT; };
-		FFA908266AB7428294DE6E70 /* ProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/ProfileSetupView.swift; sourceTree = SOURCE_ROOT; };
-		8F93DD14A11940B6926BCDF1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/WelcomeView.swift; sourceTree = SOURCE_ROOT; };
-		E72B71822FD44E998DCEBB5A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Profile/ProfileView.swift; sourceTree = SOURCE_ROOT; };
-		D3AEFE39BED24B4AB34492AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
-		46FC6CFD154041FC9CE8E78A /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Config.plist; sourceTree = SOURCE_ROOT; };
-		F07F4F512AF849718F6C694B /* Config.example.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Config.example.plist; sourceTree = SOURCE_ROOT; };
-		A7498FE1C12B4D31AD296310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MyTop10/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		09185BA0525742FEA2B45E49 /* MyTop10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTop10.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5773FF05210F48C19C21FACA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/MainTabView.swift; sourceTree = SOURCE_ROOT; };
+		BE38C82778A34F4BB366EFCB /* MyTop10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/MyTop10App.swift; sourceTree = SOURCE_ROOT; };
+		15D7AC6DDADE43CB8E230F96 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/App/RootView.swift; sourceTree = SOURCE_ROOT; };
+		F58ACD967D2941F885A323AC /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Auth/AppSession.swift; sourceTree = SOURCE_ROOT; };
+		3D2FC144884D442989E926E5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Auth/AuthService.swift; sourceTree = SOURCE_ROOT; };
+		C5B42B0E86584557B424DFEF /* ListItemComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Components/ListItemComponents.swift; sourceTree = SOURCE_ROOT; };
+		1F60BC9AE6C7441C95D063D0 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Components/SharedComponents.swift; sourceTree = SOURCE_ROOT; };
+		5FB0450846164A5C9F729EEC /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Config/AppConfig.swift; sourceTree = SOURCE_ROOT; };
+		05A2F095C9334A9BBABCC418 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Models/Models.swift; sourceTree = SOURCE_ROOT; };
+		6B1566A54AA340C4BD71AF9E /* AdMobService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/AdMobService.swift; sourceTree = SOURCE_ROOT; };
+		DA14C1F1DDCB4ADFA0537D50 /* LocationPermissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/LocationPermissionService.swift; sourceTree = SOURCE_ROOT; };
+		040C2093AAA9483E83F0F81F /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/ProfileService.swift; sourceTree = SOURCE_ROOT; };
+		AC446DF64B2E4ADBBF72D1A7 /* SupabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/SupabaseManager.swift; sourceTree = SOURCE_ROOT; };
+		0D557B9877D64452B7736158 /* TopTenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Services/TopTenService.swift; sourceTree = SOURCE_ROOT; };
+		71737DB14047411080588E17 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Core/Theme/Theme.swift; sourceTree = SOURCE_ROOT; };
+		89C6D9590AFA44B1A3A0124F /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Categories/CategoriesView.swift; sourceTree = SOURCE_ROOT; };
+		B3C7495D64E348BF831BA2BD /* CreateTopTenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Create/CreateTopTenView.swift; sourceTree = SOURCE_ROOT; };
+		577546AAA0F54A62969EBE8E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Discover/DiscoverView.swift; sourceTree = SOURCE_ROOT; };
+		BABB812F029F415CB2875405 /* ItemEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/ItemEditorView.swift; sourceTree = SOURCE_ROOT; };
+		9AC97C8F31C542B580097EEE /* ListSettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/ListSettingsSheet.swift; sourceTree = SOURCE_ROOT; };
+		3A0B9A4A040C4283A10423E5 /* MyListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/MyListsView.swift; sourceTree = SOURCE_ROOT; };
+		AF2745486D5D47869E87020A /* TopTenDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Lists/TopTenDetailView.swift; sourceTree = SOURCE_ROOT; };
+		9579F5FF917D4EA991575E8C /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Map/LocationPickerView.swift; sourceTree = SOURCE_ROOT; };
+		B9D2B6381B04462788147013 /* OTPVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/OTPVerifyView.swift; sourceTree = SOURCE_ROOT; };
+		4828B36855C548F7B81242BE /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/OnboardingFlowView.swift; sourceTree = SOURCE_ROOT; };
+		37410CF8F2664706A4156CC5 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/PermissionsView.swift; sourceTree = SOURCE_ROOT; };
+		AC594729E7A04087AC5140CD /* PhoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/PhoneEntryView.swift; sourceTree = SOURCE_ROOT; };
+		2C0B494EC7E240F59DC1ED2B /* ProfileSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/ProfileSetupView.swift; sourceTree = SOURCE_ROOT; };
+		243C3CF8CF9A4EC581FD89FD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Onboarding/WelcomeView.swift; sourceTree = SOURCE_ROOT; };
+		44197E94B43049C0BF005343 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTop10/Features/Profile/ProfileView.swift; sourceTree = SOURCE_ROOT; };
+		768334E151194180875F91B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
+		2B4BDC0A7445445A94E39067 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Config.plist; sourceTree = SOURCE_ROOT; };
+		FE5D1FF7C6FE4BE185DDD72E /* Config.example.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyTop10/Resources/Config.example.plist; sourceTree = SOURCE_ROOT; };
+		71BCEF2F1823408AADD21FDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MyTop10/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1594000A6494403A8D35402A /* Frameworks */ = {
+		65BB1E1505F84A87AA90A9B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B25C67DFF6AF4366B62C7D25 /* FirebaseAuth in Frameworks */,
-				8EC8EE8917E94AF79C4F12EB /* FirebaseCore in Frameworks */,
-				229F1619F889476B9A78053D /* Supabase in Frameworks */,
-				6BBB536B8E0E4C989223E972 /* GoogleMobileAds in Frameworks */,
+				2A2B7F7CF16743B9B59DB871 /* FirebaseAuth in Frameworks */,
+				80723589815E48A59039358D /* FirebaseCore in Frameworks */,
+				CDC44852E79C4744AD7E147F /* Supabase in Frameworks */,
+				A332C3D1AE854F688D637060 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DED885905C984550BB2D6CBA = {
+		3CB6519414FC42DEBF274165 = {
 			isa = PBXGroup;
 			children = (
-				8A2A416D099142DFA1E27A0E /* MyTop10 */,
-				DC798695339A48E39D06BD23 /* Products */,
+				73E0C34D295C4A94BC97CAA9 /* MyTop10 */,
+				E5DBAA13FA5043CE8A19D4C9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8A2A416D099142DFA1E27A0E /* MyTop10 */ = {
+		73E0C34D295C4A94BC97CAA9 /* MyTop10 */ = {
 			isa = PBXGroup;
 			children = (
-				51E0A999C35545AB8ACB57F8 /* MainTabView.swift */,
-				F9493337DD034BD7BA873B49 /* MyTop10App.swift */,
-				1797596CB5D949358AD9FA2A /* RootView.swift */,
-				2D5D1BD4536B46EC83B94386 /* AppSession.swift */,
-				7A9BFCF727C541CBBD8413C3 /* AuthService.swift */,
-				A2F5810E7747444C800531F3 /* PasswordValidator.swift */,
-				96912B7A5AD44D559130851B /* ListItemComponents.swift */,
-				DAEDFAE38169415098323188 /* SharedComponents.swift */,
-				E89DC34167C244DCAB09470B /* AppConfig.swift */,
-				F3F29D32D78241FAA1C116E7 /* Models.swift */,
-				A702B1C756D3429EBBBDC6ED /* AdMobService.swift */,
-				A7830D206E3641D894BF72E8 /* LocationPermissionService.swift */,
-				36D66188D73B42098C34979B /* ProfileService.swift */,
-				B98E7B1074564106A03E0108 /* SupabaseManager.swift */,
-				F1EE503FD83F4C6980B531AC /* TopTenService.swift */,
-				207DEC7BC9844A3682DCDFF1 /* Theme.swift */,
-				BAF94C4477EE40618F3923E9 /* CategoriesView.swift */,
-				0A21AF175FD54CC982EDB20A /* CreateTopTenView.swift */,
-				D542C6175DD04771BDBAB95E /* DiscoverView.swift */,
-				183CFEA3152F421885D26762 /* ItemEditorView.swift */,
-				34A201B57BBF45E6B042631C /* ListSettingsSheet.swift */,
-				3B2E662D1D4A4AB5B2E20EE2 /* MyListsView.swift */,
-				7365FA0945024CD5A6491278 /* TopTenDetailView.swift */,
-				FEC7D7DB7B7D4685ADEE6BFF /* LocationPickerView.swift */,
-				1EDA420D733F40788AC27E5A /* OTPVerifyView.swift */,
-				C85D2156D9D64D10B18ED693 /* OnboardingFlowView.swift */,
-				E3777EC8A53946628229F479 /* PermissionsView.swift */,
-				B615721750394397BDEF186B /* PhoneEntryView.swift */,
-				FFA908266AB7428294DE6E70 /* ProfileSetupView.swift */,
-				8F93DD14A11940B6926BCDF1 /* WelcomeView.swift */,
-				E72B71822FD44E998DCEBB5A /* ProfileView.swift */,
-				D3AEFE39BED24B4AB34492AC /* Info.plist */,
-				46FC6CFD154041FC9CE8E78A /* Config.plist */,
-				F07F4F512AF849718F6C694B /* Config.example.plist */,
-				A7498FE1C12B4D31AD296310 /* Assets.xcassets */,
+				5773FF05210F48C19C21FACA /* MainTabView.swift */,
+				BE38C82778A34F4BB366EFCB /* MyTop10App.swift */,
+				15D7AC6DDADE43CB8E230F96 /* RootView.swift */,
+				F58ACD967D2941F885A323AC /* AppSession.swift */,
+				3D2FC144884D442989E926E5 /* AuthService.swift */,
+				C5B42B0E86584557B424DFEF /* ListItemComponents.swift */,
+				1F60BC9AE6C7441C95D063D0 /* SharedComponents.swift */,
+				5FB0450846164A5C9F729EEC /* AppConfig.swift */,
+				05A2F095C9334A9BBABCC418 /* Models.swift */,
+				6B1566A54AA340C4BD71AF9E /* AdMobService.swift */,
+				DA14C1F1DDCB4ADFA0537D50 /* LocationPermissionService.swift */,
+				040C2093AAA9483E83F0F81F /* ProfileService.swift */,
+				AC446DF64B2E4ADBBF72D1A7 /* SupabaseManager.swift */,
+				0D557B9877D64452B7736158 /* TopTenService.swift */,
+				71737DB14047411080588E17 /* Theme.swift */,
+				89C6D9590AFA44B1A3A0124F /* CategoriesView.swift */,
+				B3C7495D64E348BF831BA2BD /* CreateTopTenView.swift */,
+				577546AAA0F54A62969EBE8E /* DiscoverView.swift */,
+				BABB812F029F415CB2875405 /* ItemEditorView.swift */,
+				9AC97C8F31C542B580097EEE /* ListSettingsSheet.swift */,
+				3A0B9A4A040C4283A10423E5 /* MyListsView.swift */,
+				AF2745486D5D47869E87020A /* TopTenDetailView.swift */,
+				9579F5FF917D4EA991575E8C /* LocationPickerView.swift */,
+				B9D2B6381B04462788147013 /* OTPVerifyView.swift */,
+				4828B36855C548F7B81242BE /* OnboardingFlowView.swift */,
+				37410CF8F2664706A4156CC5 /* PermissionsView.swift */,
+				AC594729E7A04087AC5140CD /* PhoneEntryView.swift */,
+				2C0B494EC7E240F59DC1ED2B /* ProfileSetupView.swift */,
+				243C3CF8CF9A4EC581FD89FD /* WelcomeView.swift */,
+				44197E94B43049C0BF005343 /* ProfileView.swift */,
+				768334E151194180875F91B6 /* Info.plist */,
+				2B4BDC0A7445445A94E39067 /* Config.plist */,
+				FE5D1FF7C6FE4BE185DDD72E /* Config.example.plist */,
+				71BCEF2F1823408AADD21FDB /* Assets.xcassets */,
 			);
 			name = MyTop10;
 			sourceTree = "<group>";
 		};
-		DC798695339A48E39D06BD23 /* Products */ = {
+		E5DBAA13FA5043CE8A19D4C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A16CAFA614EE409DB00D0E7C /* MyTop10.app */,
+				09185BA0525742FEA2B45E49 /* MyTop10.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,13 +160,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6E39BEF268EE446495B0A80B /* MyTop10 */ = {
+		AA57A545622347C18FE92578 /* MyTop10 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D18AC93BCCCB42ECAEBF9F76 /* Build configuration list for PBXNativeTarget "MyTop10" */;
+			buildConfigurationList = A8AA2A2FE7EF4587A3092EDD /* Build configuration list for PBXNativeTarget "MyTop10" */;
 			buildPhases = (
-				2CC66C77AAE74A958EBCF935 /* Sources */,
-				1594000A6494403A8D35402A /* Frameworks */,
-				5AB75E8CB52543FE86B29841 /* Resources */,
+				CF00FD1E3E9146EF862BDAD4 /* Sources */,
+				65BB1E1505F84A87AA90A9B1 /* Frameworks */,
+				608AC86BE1DE4BD2885C0A2A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -177,26 +174,26 @@
 			);
 			name = MyTop10;
 			packageProductDependencies = (
-				4063C30D372C4B63A12773ED /* FirebaseAuth */,
-				0F91E113CD214B01BBC142D9 /* FirebaseCore */,
-				ABD62CEBA707414391ECA0EB /* Supabase */,
-				53B02036CD254C4B9679D2AF /* GoogleMobileAds */,
+				8401613F4CB341EA8A390C17 /* FirebaseAuth */,
+				27EB4604A3974B958CFB5B6A /* FirebaseCore */,
+				42D66E11A3F84CA0AB719A9A /* Supabase */,
+				48AB05B809FD49BFA36630DC /* GoogleMobileAds */,
 			);
 			productName = MyTop10;
-			productReference = A16CAFA614EE409DB00D0E7C /* MyTop10.app */;
+			productReference = 09185BA0525742FEA2B45E49 /* MyTop10.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		29B2B293C56C4672B1759216 /* Project object */ = {
+		F91BE44F5CEA4C7F95FCF156 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 			};
-			buildConfigurationList = 4F2D53C8DA244696A0CEBF11 /* Build configuration list for PBXProject "MyTop10" */;
+			buildConfigurationList = BB54ADFAAA10479584E46162 /* Build configuration list for PBXProject "MyTop10" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -204,77 +201,76 @@
 				en,
 				Base,
 			);
-			mainGroup = DED885905C984550BB2D6CBA;
+			mainGroup = 3CB6519414FC42DEBF274165;
 			packageReferences = (
-				1E8EB7751D9445FAA108F38F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				C046ECA166354A738486ED71 /* XCRemoteSwiftPackageReference "supabase-swift" */,
-				6AA385C2CACA4AE893BFEEB6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				FFC70D61C4AE4C86B3E7A2D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B483AFCC39E3441DBC3DC3A5 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				FF0AB986222C4DFB82630992 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
-			productRefGroup = DC798695339A48E39D06BD23 /* Products */;
+			productRefGroup = E5DBAA13FA5043CE8A19D4C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E39BEF268EE446495B0A80B /* MyTop10 */,
+				AA57A545622347C18FE92578 /* MyTop10 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5AB75E8CB52543FE86B29841 /* Resources */ = {
+		608AC86BE1DE4BD2885C0A2A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0415A7A6BD84AAABB74E8D5 /* Config.plist in Resources */,
-				66723FF79D514A1080206BAD /* Config.example.plist in Resources */,
-				86FAE544610E464B98AC06AE /* Assets.xcassets in Resources */,
+				3263664FEEDF4C7681024003 /* Config.plist in Resources */,
+				434356FE6A0047118C01BB38 /* Config.example.plist in Resources */,
+				F7D42949E8E240B8A2CF1155 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2CC66C77AAE74A958EBCF935 /* Sources */ = {
+		CF00FD1E3E9146EF862BDAD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				250B7C663AA84E788C626E3C /* MainTabView.swift in Sources */,
-				91885CF7A6C74B5EA8F66E32 /* MyTop10App.swift in Sources */,
-				3C7529A3EE9C4E1488C36906 /* RootView.swift in Sources */,
-				8366A6A9148E4DFA8760ADDB /* AppSession.swift in Sources */,
-				4063E59B42AA4B4797A9A750 /* AuthService.swift in Sources */,
-				A38B19FAC70C4118BC1B2E4F /* PasswordValidator.swift in Sources */,
-				65DFA003FB6D498DAE7D32C2 /* ListItemComponents.swift in Sources */,
-				43EEAEF192EA481E88027990 /* SharedComponents.swift in Sources */,
-				10CCB1EDFCA9451E849E31D6 /* AppConfig.swift in Sources */,
-				18E7AB5502E94180B74F831D /* Models.swift in Sources */,
-				AB6EF028E6BD44D3A816004D /* AdMobService.swift in Sources */,
-				A1098F3121524F59AB08DBFB /* LocationPermissionService.swift in Sources */,
-				C9FEA8C2D57E494A9982F044 /* ProfileService.swift in Sources */,
-				8663EBE74AE746F893CDEAAE /* SupabaseManager.swift in Sources */,
-				246CEB2A05204DB4A2D6208A /* TopTenService.swift in Sources */,
-				B151B45CB56849489BD95FEB /* Theme.swift in Sources */,
-				919A32D98312412C8384D59E /* CategoriesView.swift in Sources */,
-				4EFF6D55841A4D84B799D6E8 /* CreateTopTenView.swift in Sources */,
-				0CFB1563092E4A51BD11AA64 /* DiscoverView.swift in Sources */,
-				A180C8EC2F414637BD5E11C1 /* ItemEditorView.swift in Sources */,
-				12F8A33ACB7E450CA25AFCBB /* ListSettingsSheet.swift in Sources */,
-				3956798DF1044A8BB93AF7BB /* MyListsView.swift in Sources */,
-				8BA22E02043E4AC79FB7F64F /* TopTenDetailView.swift in Sources */,
-				5744B0F48E22410CBD521353 /* LocationPickerView.swift in Sources */,
-				50A18A9D382D484C8156FD27 /* OTPVerifyView.swift in Sources */,
-				EAFC16093F4740DFBE0B0D20 /* OnboardingFlowView.swift in Sources */,
-				B05F1FD62DAC4EA8884A087D /* PermissionsView.swift in Sources */,
-				B3571B48651C40E7930F1297 /* PhoneEntryView.swift in Sources */,
-				942BEFFA2D6D4D33A593393D /* ProfileSetupView.swift in Sources */,
-				0A51475D6AE644ADBE953873 /* WelcomeView.swift in Sources */,
-				2C62DF4BDE3A4103AC7B8A80 /* ProfileView.swift in Sources */,
+				4B9464F7D5D2436C9191317D /* MainTabView.swift in Sources */,
+				058329A0DD5447BD992FA67B /* MyTop10App.swift in Sources */,
+				155F65A60171443A8D87273F /* RootView.swift in Sources */,
+				89CCAACF151F49D5A1CD3C51 /* AppSession.swift in Sources */,
+				86019C25904B4872966351EA /* AuthService.swift in Sources */,
+				089254491CA848598B622528 /* ListItemComponents.swift in Sources */,
+				7A02F8ABCF6840BFB852B543 /* SharedComponents.swift in Sources */,
+				FF4D751C79FB47A1B8001A06 /* AppConfig.swift in Sources */,
+				74637F4BD72D45B8A312C96B /* Models.swift in Sources */,
+				24590E6930DF4CE38D54005D /* AdMobService.swift in Sources */,
+				350D56516C1D4ACFA9D3461C /* LocationPermissionService.swift in Sources */,
+				F6E35B726D1B40BAA4E5B594 /* ProfileService.swift in Sources */,
+				5715610CC73C4C87818256D2 /* SupabaseManager.swift in Sources */,
+				D9939578AAD04003A6CB3D50 /* TopTenService.swift in Sources */,
+				6F32460116FE433982E771AA /* Theme.swift in Sources */,
+				609A9BC932C74428A2B6801B /* CategoriesView.swift in Sources */,
+				860913CFD0B548D9ADB5576B /* CreateTopTenView.swift in Sources */,
+				7D3B039DF95D4C7FAEB184DD /* DiscoverView.swift in Sources */,
+				B5790416174045BDAF8BD7A7 /* ItemEditorView.swift in Sources */,
+				93903CADC93842D4B2EF2C36 /* ListSettingsSheet.swift in Sources */,
+				E13055F536624697A265CA34 /* MyListsView.swift in Sources */,
+				5228DF8C6CEC41239ABC1C50 /* TopTenDetailView.swift in Sources */,
+				12389BB3AF7844BB9E0608A9 /* LocationPickerView.swift in Sources */,
+				552DB45A3031425F8A71554B /* OTPVerifyView.swift in Sources */,
+				FE5770F03901416084D0A094 /* OnboardingFlowView.swift in Sources */,
+				2A299561277042DBAA9A61AD /* PermissionsView.swift in Sources */,
+				74410531E82D44A5BF6E282D /* PhoneEntryView.swift in Sources */,
+				A89A809FDCF447B99ED006AA /* ProfileSetupView.swift in Sources */,
+				AFA5CB7425C94C95B00600C3 /* WelcomeView.swift in Sources */,
+				3DDC434C6DE24D6993F77571 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		50E6ACA782C34344BD1F9BB6 /* Debug */ = {
+		CC97A6AEEE7C40F988971812 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -291,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		EA109B2C3D7447F8A91704AE /* Release */ = {
+		3DEF7E9C4603432385E6EE2B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -305,7 +301,7 @@
 			};
 			name = Release;
 		};
-		39509C5FF3ED470AA707F979 /* Debug */ = {
+		DB1A5D9856654A68BDDA25C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -333,7 +329,7 @@
 			};
 			name = Debug;
 		};
-		88FCD8E7DE984E7F9314E12C /* Release */ = {
+		190E5537A2EB45E29E31F44F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -364,20 +360,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F2D53C8DA244696A0CEBF11 /* Build configuration list for PBXProject "MyTop10" */ = {
+		BB54ADFAAA10479584E46162 /* Build configuration list for PBXProject "MyTop10" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50E6ACA782C34344BD1F9BB6 /* Debug */,
-				EA109B2C3D7447F8A91704AE /* Release */,
+				CC97A6AEEE7C40F988971812 /* Debug */,
+				3DEF7E9C4603432385E6EE2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D18AC93BCCCB42ECAEBF9F76 /* Build configuration list for PBXNativeTarget "MyTop10" */ = {
+		A8AA2A2FE7EF4587A3092EDD /* Build configuration list for PBXNativeTarget "MyTop10" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				39509C5FF3ED470AA707F979 /* Debug */,
-				88FCD8E7DE984E7F9314E12C /* Release */,
+				DB1A5D9856654A68BDDA25C9 /* Debug */,
+				190E5537A2EB45E29E31F44F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -385,7 +381,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1E8EB7751D9445FAA108F38F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		FFC70D61C4AE4C86B3E7A2D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -393,7 +389,7 @@
 				minimumVersion = 11.0.0;
 			};
 		};
-		C046ECA166354A738486ED71 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+		B483AFCC39E3441DBC3DC3A5 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/supabase/supabase-swift";
 			requirement = {
@@ -401,7 +397,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		6AA385C2CACA4AE893BFEEB6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+		FF0AB986222C4DFB82630992 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
 			requirement = {
@@ -412,27 +408,27 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4063C30D372C4B63A12773ED /* FirebaseAuth */ = {
+		8401613F4CB341EA8A390C17 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1E8EB7751D9445FAA108F38F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = FFC70D61C4AE4C86B3E7A2D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		0F91E113CD214B01BBC142D9 /* FirebaseCore */ = {
+		27EB4604A3974B958CFB5B6A /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1E8EB7751D9445FAA108F38F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = FFC70D61C4AE4C86B3E7A2D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		ABD62CEBA707414391ECA0EB /* Supabase */ = {
+		42D66E11A3F84CA0AB719A9A /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C046ECA166354A738486ED71 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			package = B483AFCC39E3441DBC3DC3A5 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
 		};
-		53B02036CD254C4B9679D2AF /* GoogleMobileAds */ = {
+		48AB05B809FD49BFA36630DC /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AA385C2CACA4AE893BFEEB6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			package = FF0AB986222C4DFB82630992 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 29B2B293C56C4672B1759216 /* Project object */;
+	rootObject = F91BE44F5CEA4C7F95FCF156 /* Project object */;
 }

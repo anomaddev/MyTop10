@@ -19,8 +19,7 @@ Native SwiftUI app. Firebase Authentication owns identity. Supabase owns Postgre
 2. Add an **iOS app** with bundle ID `com.anomaddev.MyTop10` (or change the bundle ID in Xcode to match).
 3. Download `GoogleService-Info.plist` into `MyTop10/Resources/` and add it to the Xcode target.
 4. Enable **Authentication → Sign-in method**:
-   - Phone
-   - Email/Password
+   - **Phone** only (OTP). Do not enable Email/Password — the app signs users in with their phone number exclusively.
 5. For Phone Auth on device:
    - Upload APNs key in Firebase Project Settings → Cloud Messaging
    - Add test phone numbers under Authentication → Phone for Simulator
@@ -74,7 +73,6 @@ Fill in:
 | `SUPABASE_ANON_KEY` | Supabase anon/publishable key |
 | `FIREBASE_PROJECT_ID` | Firebase project ID |
 | `ADMOB_*` | Leave Google test IDs until production |
-| `PASSWORD_EMAIL_DOMAIN` | Keep `users.mytop10.app` (synthetic emails for password login) |
 
 Do **not** commit real production secrets if the repo is public. `Config.plist` is gitignored when you add secrets; keep `Config.example.plist` as the template.
 
@@ -89,29 +87,30 @@ Do **not** commit real production secrets if the repo is public. `Config.plist` 
 ## 6. How Firebase Auth talks to Supabase
 
 ```
-iOS → Firebase Phone / Email-Password → ID token (JWT)
-                                         ↓
-                         Supabase client accessToken callback
-                                         ↓
-                         Postgres role = claim "role": "authenticated"
-                                         ↓
-                         RLS uses public.firebase_uid() = jwt.sub
+iOS → Firebase Phone OTP → ID token (JWT)
+                                    ↓
+                    Supabase client accessToken callback
+                                    ↓
+                    Postgres role = claim "role": "authenticated"
+                                    ↓
+                    RLS uses public.firebase_uid() = jwt.sub
 ```
 
 Critical details already implemented in code/SQL:
 
 - Supabase client uses Firebase `getIDToken()` as `accessToken`
 - Cloud Function sets `role: "authenticated"`
-- App force-refreshes the token after signup / password link
+- App force-refreshes the token after phone OTP sign-in
 - RLS uses `auth.jwt() ->> 'sub'` via `public.firebase_uid()` — never cast Firebase UIDs to UUID
 
 ## 7. Auth product behavior
 
 | Step | Behavior |
 |------|----------|
-| Welcome → Phone | Firebase Phone OTP |
-| Profile password | Links Email/Password using `phone+{digits}@users.mytop10.app` |
-| Later Sign In | Phone + password (synthetic email) or OTP path during onboarding |
+| Welcome → Phone | Enter phone number |
+| OTP | Firebase SMS code signs the user in |
+| Profile | Avatar, full name, username (no password) |
+| Later Sign In | Same phone + OTP flow |
 | Sign Out | Firebase `signOut()` + return to welcome |
 
 ## 8. Run

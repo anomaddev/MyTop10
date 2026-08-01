@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E39BEF268EE446495B0A80B"
+               BlueprintIdentifier = "AA57A545622347C18FE92578"
                BuildableName = "MyTop10.app"
                BlueprintName = "MyTop10"
                ReferencedContainer = "container:MyTop10.xcodeproj">
@@ -42,7 +42,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E39BEF268EE446495B0A80B"
+            BlueprintIdentifier = "AA57A545622347C18FE92578"
             BuildableName = "MyTop10.app"
             BlueprintName = "MyTop10"
             ReferencedContainer = "container:MyTop10.xcodeproj">
@@ -59,7 +59,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6E39BEF268EE446495B0A80B"
+            BlueprintIdentifier = "AA57A545622347C18FE92578"
             BuildableName = "MyTop10.app"
             BlueprintName = "MyTop10"
             ReferencedContainer = "container:MyTop10.xcodeproj">

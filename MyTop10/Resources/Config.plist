@@ -12,7 +12,5 @@
 	<string>ca-app-pub-3940256099942544/2934735716</string>
 	<key>ADMOB_INTERSTITIAL_UNIT_ID</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
-	<key>PASSWORD_EMAIL_DOMAIN</key>
-	<string>users.mytop10.app</string>
 </dict>
 </plist>

@@ -2,13 +2,13 @@
 
 Native SwiftUI iOS app for ranking and sharing Top 10 lists.
 
-**Auth:** Firebase Authentication (Phone + Password)  
+**Auth:** Firebase Authentication (Phone OTP only)  
 **Data:** Supabase (Postgres + Storage + RLS)  
 **Ads:** Google AdMob
 
 ## Features
 
-- Onboarding: Welcome → Phone OTP → Profile (avatar, name, username, strong password) → Location & Notifications
+- Onboarding: Welcome → Phone OTP → Profile (avatar, name, username) → Location & Notifications
 - Bottom tabs: My Lists · Categories · Create · Discover
 - Profile bubble for edit profile / sign out
 - Full list CRUD: swipe to delete/edit, drag-reorder lists and item ranks
