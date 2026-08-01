@@ -1,0 +1,9 @@
+# Minimal Supabase config for local CLI / migration workflows.
+# Replace project_id with your Firebase project ID after creating Firebase.
+
+[project]
+id = "mytop10"
+
+[auth.third_party.firebase]
+enabled = true
+project_id = "YOUR_FIREBASE_PROJECT_ID"
