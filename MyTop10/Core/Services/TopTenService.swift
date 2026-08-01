@@ -1,15 +1,62 @@
 import Foundation
 import Supabase
+import UIKit
+
+struct ItemWritePayload {
+    var title: String
+    var note: String?
+    var tags: [String]
+    var photoUrls: [String]
+    var rating: Int?
+    var isFavorite: Bool
+    var visitedOn: Date?
+    var placeName: String?
+    var lat: Double?
+    var lng: Double?
+    var address: String?
+
+    init(draft: ItemDraft, photoUrls: [String]? = nil) {
+        title = draft.title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedNote = draft.note.trimmingCharacters(in: .whitespacesAndNewlines)
+        note = trimmedNote.isEmpty ? nil : trimmedNote
+        tags = draft.tags
+        self.photoUrls = photoUrls ?? draft.photoUrls
+        rating = draft.rating
+        isFavorite = draft.isFavorite
+        visitedOn = draft.visitedOn
+        placeName = draft.placeName.isEmpty ? nil : draft.placeName
+        lat = draft.latitude
+        lng = draft.longitude
+        address = draft.address.isEmpty ? nil : draft.address
+    }
+}
 
 @MainActor
 final class TopTenService {
     private var db: SupabaseClient { SupabaseManager.client }
+
+    private var isoFormatter: ISO8601DateFormatter {
+        let f = ISO8601DateFormatter()
+        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return f
+    }
+
+    private var dateOnlyFormatter: DateFormatter {
+        let f = DateFormatter()
+        f.calendar = Calendar(identifier: .gregorian)
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "yyyy-MM-dd"
+        return f
+    }
+
+    // MARK: - Lists
 
     func fetchMyLists(ownerId: String) async throws -> [TopTen] {
         try await db
             .from("top_tens")
             .select()
             .eq("owner_id", value: ownerId)
+            .order("sort_order", ascending: true)
             .order("updated_at", ascending: false)
             .execute()
             .value
@@ -47,27 +94,21 @@ final class TopTenService {
             .value
     }
 
-    func fetchItems(for topTenId: UUID) async throws -> [TopTenItem] {
-        try await db
-            .from("top_ten_items")
-            .select()
-            .eq("top_ten_id", value: topTenId.uuidString)
-            .order("rank", ascending: true)
-            .execute()
-            .value
-    }
-
     func createList(
         ownerId: String,
         title: String,
         categoryId: UUID?,
         visibility: ListVisibility,
-        items: [(title: String, note: String?, placeName: String?, lat: Double?, lng: Double?, address: String?)]
+        drafts: [ItemDraft]
     ) async throws -> TopTen {
+        let existing = try await fetchMyLists(ownerId: ownerId)
+        let nextOrder = (existing.map(\.sortOrder).max() ?? -1) + 1
+
         var payload: [String: AnyJSON] = [
             "owner_id": .string(ownerId),
             "title": .string(title),
             "visibility": .string(visibility.rawValue),
+            "sort_order": .integer(nextOrder),
             "upvotes": .integer(0),
             "downvotes": .integer(0)
         ]
@@ -83,57 +124,206 @@ final class TopTenService {
             .execute()
             .value
 
-        if !items.isEmpty {
-            let rows: [[String: AnyJSON]] = items.enumerated().map { index, item in
-                var row: [String: AnyJSON] = [
-                    "top_ten_id": .string(list.id.uuidString),
-                    "rank": .integer(index + 1),
-                    "title": .string(item.title)
-                ]
-                if let note = item.note { row["note"] = .string(note) }
-                if let placeName = item.placeName { row["place_name"] = .string(placeName) }
-                if let lat = item.lat { row["lat"] = .double(lat) }
-                if let lng = item.lng { row["lng"] = .double(lng) }
-                if let address = item.address { row["address"] = .string(address) }
-                return row
+        let filled = drafts.filter { !$0.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        for (index, draft) in filled.prefix(10).enumerated() {
+            var urls = draft.photoUrls
+            for data in draft.localPhotos {
+                if let uploaded = try? await uploadItemPhoto(
+                    userId: ownerId,
+                    listId: list.id,
+                    itemId: draft.id,
+                    imageData: data
+                ) {
+                    urls.append(uploaded)
+                }
             }
-            try await db.from("top_ten_items").insert(rows).execute()
+            _ = try await insertItem(
+                topTenId: list.id,
+                rank: index + 1,
+                itemId: draft.id,
+                payload: ItemWritePayload(draft: draft, photoUrls: urls)
+            )
         }
         return list
     }
 
-    func updateListMeta(_ list: TopTen) async throws {
+    func updateListMeta(_ list: TopTen) async throws -> TopTen {
         let payload: [String: AnyJSON] = [
             "title": .string(list.title),
             "visibility": .string(list.visibility.rawValue),
             "category_id": list.categoryId.map { .string($0.uuidString) } ?? .null,
-            "updated_at": .string(ISO8601DateFormatter().string(from: Date()))
+            "cover_url": list.coverUrl.map { .string($0) } ?? .null,
+            "updated_at": .string(isoFormatter.string(from: Date()))
         ]
-        try await db.from("top_tens").update(payload).eq("id", value: list.id.uuidString).execute()
+        return try await db
+            .from("top_tens")
+            .update(payload)
+            .eq("id", value: list.id.uuidString)
+            .select()
+            .single()
+            .execute()
+            .value
     }
 
-    func replaceItems(topTenId: UUID, items: [TopTenItem]) async throws {
-        try await db.from("top_ten_items").delete().eq("top_ten_id", value: topTenId.uuidString).execute()
-        guard !items.isEmpty else { return }
-        let rows: [[String: AnyJSON]] = items.enumerated().map { index, item in
-            var row: [String: AnyJSON] = [
-                "top_ten_id": .string(topTenId.uuidString),
-                "rank": .integer(index + 1),
-                "title": .string(item.title)
-            ]
-            if let note = item.note { row["note"] = .string(note) }
-            if let placeName = item.placeName { row["place_name"] = .string(placeName) }
-            if let lat = item.latitude { row["lat"] = .double(lat) }
-            if let lng = item.longitude { row["lng"] = .double(lng) }
-            if let address = item.address { row["address"] = .string(address) }
-            return row
+    func reorderLists(_ lists: [TopTen]) async throws {
+        for (index, list) in lists.enumerated() {
+            let payload: [String: AnyJSON] = ["sort_order": .integer(index)]
+            try await db
+                .from("top_tens")
+                .update(payload)
+                .eq("id", value: list.id.uuidString)
+                .execute()
         }
-        try await db.from("top_ten_items").insert(rows).execute()
     }
 
     func deleteList(id: UUID) async throws {
         try await db.from("top_tens").delete().eq("id", value: id.uuidString).execute()
     }
+
+    // MARK: - Items
+
+    func fetchItems(for topTenId: UUID) async throws -> [TopTenItem] {
+        try await db
+            .from("top_ten_items")
+            .select()
+            .eq("top_ten_id", value: topTenId.uuidString)
+            .order("rank", ascending: true)
+            .execute()
+            .value
+    }
+
+    func insertItem(
+        topTenId: UUID,
+        rank: Int,
+        itemId: UUID = UUID(),
+        payload: ItemWritePayload
+    ) async throws -> TopTenItem {
+        var row = itemRow(topTenId: topTenId, rank: rank, itemId: itemId, payload: payload)
+        row["id"] = .string(itemId.uuidString)
+        return try await db
+            .from("top_ten_items")
+            .insert(row)
+            .select()
+            .single()
+            .execute()
+            .value
+    }
+
+    func updateItem(_ item: TopTenItem) async throws -> TopTenItem {
+        let payload = ItemWritePayload(
+            draft: ItemDraft(item: item),
+            photoUrls: item.photoUrls
+        )
+        var row = itemRow(topTenId: item.topTenId, rank: item.rank, itemId: item.id, payload: payload)
+        row["updated_at"] = .string(isoFormatter.string(from: Date()))
+        return try await db
+            .from("top_ten_items")
+            .update(row)
+            .eq("id", value: item.id.uuidString)
+            .select()
+            .single()
+            .execute()
+            .value
+    }
+
+    func saveItemDraft(
+        topTenId: UUID,
+        ownerId: String,
+        draft: ItemDraft,
+        rank: Int,
+        isNew: Bool
+    ) async throws -> TopTenItem {
+        var urls = draft.photoUrls
+        for data in draft.localPhotos {
+            let uploaded = try await uploadItemPhoto(
+                userId: ownerId,
+                listId: topTenId,
+                itemId: draft.id,
+                imageData: data
+            )
+            urls.append(uploaded)
+        }
+        let payload = ItemWritePayload(draft: draft, photoUrls: urls)
+        if isNew {
+            return try await insertItem(topTenId: topTenId, rank: rank, itemId: draft.id, payload: payload)
+        }
+        var row = itemRow(topTenId: topTenId, rank: rank, itemId: draft.id, payload: payload)
+        row["updated_at"] = .string(isoFormatter.string(from: Date()))
+        return try await db
+            .from("top_ten_items")
+            .update(row)
+            .eq("id", value: draft.id.uuidString)
+            .select()
+            .single()
+            .execute()
+            .value
+    }
+
+    func deleteItem(id: UUID) async throws {
+        try await db.from("top_ten_items").delete().eq("id", value: id.uuidString).execute()
+    }
+
+    /// Persist a new order after drag-reorder. Uses temporary ranks to avoid unique collisions.
+    func reorderItems(topTenId: UUID, items: [TopTenItem]) async throws -> [TopTenItem] {
+        // Phase 1: bump ranks out of the 1...10 range (stay within DB check 1...100)
+        for (index, item) in items.enumerated() {
+            try await db
+                .from("top_ten_items")
+                .update(["rank": AnyJSON.integer(50 + index)])
+                .eq("id", value: item.id.uuidString)
+                .execute()
+        }
+        // Phase 2: write final ranks
+        for (index, item) in items.enumerated() {
+            try await db
+                .from("top_ten_items")
+                .update(["rank": AnyJSON.integer(index + 1)])
+                .eq("id", value: item.id.uuidString)
+                .execute()
+        }
+        // Touch parent list
+        try await db
+            .from("top_tens")
+            .update(["updated_at": AnyJSON.string(isoFormatter.string(from: Date()))])
+            .eq("id", value: topTenId.uuidString)
+            .execute()
+        return try await fetchItems(for: topTenId)
+    }
+
+    func replaceItems(topTenId: UUID, items: [TopTenItem]) async throws {
+        try await db.from("top_ten_items").delete().eq("top_ten_id", value: topTenId.uuidString).execute()
+        guard !items.isEmpty else { return }
+        for (index, item) in items.prefix(10).enumerated() {
+            let payload = ItemWritePayload(draft: ItemDraft(item: item), photoUrls: item.photoUrls)
+            _ = try await insertItem(
+                topTenId: topTenId,
+                rank: index + 1,
+                itemId: item.id,
+                payload: payload
+            )
+        }
+    }
+
+    func uploadItemPhoto(userId: String, listId: UUID, itemId: UUID, imageData: Data) async throws -> String {
+        let path = "\(userId)/\(listId.uuidString)/\(itemId.uuidString)/\(UUID().uuidString).jpg"
+        try await db.storage
+            .from("item-photos")
+            .upload(
+                path,
+                data: imageData,
+                options: FileOptions(contentType: "image/jpeg", upsert: true)
+            )
+        return try db.storage.from("item-photos").getPublicURL(path: path).absoluteString
+    }
+
+    func uploadItemPhoto(userId: String, listId: UUID, itemId: UUID, image: UIImage) async throws -> String {
+        guard let data = image.jpegData(compressionQuality: 0.82) else {
+            throw AuthError.unknown("Could not process photo")
+        }
+        return try await uploadItemPhoto(userId: userId, listId: listId, itemId: itemId, imageData: data)
+    }
+
+    // MARK: - Categories
 
     func fetchCategories() async throws -> [Category] {
         try await db
@@ -163,6 +353,8 @@ final class TopTenService {
             .execute()
             .value
     }
+
+    // MARK: - Social
 
     func setVote(userId: String, topTenId: UUID, value: Int) async throws {
         if value == 0 {
@@ -235,5 +427,32 @@ final class TopTenService {
             .execute()
             .value
         return rows.map(\.topTen)
+    }
+
+    // MARK: - Helpers
+
+    private func itemRow(
+        topTenId: UUID,
+        rank: Int,
+        itemId: UUID,
+        payload: ItemWritePayload
+    ) -> [String: AnyJSON] {
+        var row: [String: AnyJSON] = [
+            "top_ten_id": .string(topTenId.uuidString),
+            "rank": .integer(rank),
+            "title": .string(payload.title),
+            "tags": .array(payload.tags.map { .string($0) }),
+            "photo_urls": .array(payload.photoUrls.map { .string($0) }),
+            "is_favorite": .bool(payload.isFavorite)
+        ]
+        row["note"] = payload.note.map { .string($0) } ?? .null
+        row["rating"] = payload.rating.map { .integer($0) } ?? .null
+        row["visited_on"] = payload.visitedOn.map { .string(dateOnlyFormatter.string(from: $0)) } ?? .null
+        row["place_name"] = payload.placeName.map { .string($0) } ?? .null
+        row["lat"] = payload.lat.map { .double($0) } ?? .null
+        row["lng"] = payload.lng.map { .double($0) } ?? .null
+        row["address"] = payload.address.map { .string($0) } ?? .null
+        _ = itemId
+        return row
     }
 }

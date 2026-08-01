@@ -51,8 +51,9 @@ If Identity Platform is enabled, prefer `beforeUserCreated` / `beforeUserSignedI
    enabled = true
    project_id = "YOUR_FIREBASE_PROJECT_ID"
    ```
-4. Run the schema:
-   - SQL Editor → paste / run `supabase/migrations/20260801000000_init.sql`
+4. Run the schema (in order):
+   - SQL Editor → run `supabase/migrations/20260801000000_init.sql`
+   - Then run `supabase/migrations/20260801120000_item_enrichment.sql` (tags, photos, ratings, list sort order)
    - Or CLI: `supabase link` then `supabase db push`
 5. Confirm Storage buckets `avatars` and `covers` exist (migration inserts them).
 6. Copy **Project URL** and **anon/publishable key** into `MyTop10/Resources/Config.plist`.

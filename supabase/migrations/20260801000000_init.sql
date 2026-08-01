@@ -56,6 +56,7 @@ create table public.top_tens (
   category_id uuid references public.categories (id) on delete set null,
   visibility text not null default 'public' check (visibility in ('private', 'followers', 'public')),
   cover_url text,
+  sort_order int not null default 0,
   upvotes int not null default 0,
   downvotes int not null default 0,
   created_at timestamptz not null default now(),
@@ -63,6 +64,7 @@ create table public.top_tens (
 );
 
 create index top_tens_owner_idx on public.top_tens (owner_id);
+create index top_tens_owner_sort_idx on public.top_tens (owner_id, sort_order, updated_at desc);
 create index top_tens_category_idx on public.top_tens (category_id);
 create index top_tens_visibility_idx on public.top_tens (visibility);
 
@@ -74,18 +76,29 @@ for each row execute function public.set_updated_at();
 create table public.top_ten_items (
   id uuid primary key default gen_random_uuid(),
   top_ten_id uuid not null references public.top_tens (id) on delete cascade,
-  rank int not null check (rank between 1 and 10),
+  rank int not null check (rank between 1 and 100),
   title text not null,
   note text,
+  tags text[] not null default '{}',
+  photo_urls text[] not null default '{}',
+  rating int check (rating is null or rating between 1 and 5),
+  is_favorite boolean not null default false,
+  visited_on date,
   place_name text,
   lat double precision,
   lng double precision,
   address text,
   created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
   unique (top_ten_id, rank)
 );
 
 create index top_ten_items_list_idx on public.top_ten_items (top_ten_id);
+create index top_ten_items_tags_gin on public.top_ten_items using gin (tags);
+
+create trigger top_ten_items_updated_at
+before update on public.top_ten_items
+for each row execute function public.set_updated_at();
 
 -- Votes
 create table public.votes (
@@ -337,5 +350,42 @@ create policy "Users upload own covers"
   to authenticated
   with check (
     bucket_id = 'covers'
+    and (storage.foldername(name))[1] = public.firebase_uid()
+  );
+
+insert into storage.buckets (id, name, public)
+values ('item-photos', 'item-photos', true)
+on conflict (id) do nothing;
+
+create policy "Item photos are public"
+  on storage.objects for select
+  to authenticated, anon
+  using (bucket_id = 'item-photos');
+
+create policy "Users upload item photos"
+  on storage.objects for insert
+  to authenticated
+  with check (
+    bucket_id = 'item-photos'
+    and (storage.foldername(name))[1] = public.firebase_uid()
+  );
+
+create policy "Users update item photos"
+  on storage.objects for update
+  to authenticated
+  using (
+    bucket_id = 'item-photos'
+    and (storage.foldername(name))[1] = public.firebase_uid()
+  )
+  with check (
+    bucket_id = 'item-photos'
+    and (storage.foldername(name))[1] = public.firebase_uid()
+  );
+
+create policy "Users delete item photos"
+  on storage.objects for delete
+  to authenticated
+  using (
+    bucket_id = 'item-photos'
     and (storage.foldername(name))[1] = public.firebase_uid()
   );
