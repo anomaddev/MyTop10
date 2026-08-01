@@ -11,10 +11,10 @@ Native SwiftUI iOS app for ranking and sharing Top 10 lists.
 - Onboarding: Welcome → Phone OTP → Profile (avatar, name, username, strong password) → Location & Notifications
 - Bottom tabs: My Lists · Categories · Create · Discover
 - Profile bubble for edit profile / sign out
-- Top 10 create, edit, drag-reorder
+- Full list CRUD: swipe to delete/edit, drag-reorder lists and item ranks
+- Item details: notes, tags, photos, star rating, favorites, visited date, map pins
 - Upvote, downvote, bookmark
 - Followers / following
-- Map pins on list items
 - AdMob banner + interstitial placements
 
 ## Quick start
