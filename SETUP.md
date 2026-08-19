@@ -33,6 +33,7 @@ Native SwiftUI app. Firebase Authentication owns identity. Supabase owns Postgre
    firebase deploy --only functions
    ```
    The `processSignUp` function sets `{ role: "authenticated" }` on every new user so Supabase RLS works.
+   Optional: if Identity Platform blocking functions are enabled, also deploy `functions/blocking.js` (`beforecreated` / `beforesignedin`) so the claim is on the first token without a race.
 
 ### Optional (recommended): Identity Platform blocking functions
 

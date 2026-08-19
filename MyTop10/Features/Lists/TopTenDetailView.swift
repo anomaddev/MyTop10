@@ -6,6 +6,7 @@ struct TopTenDetailView: View {
     let listId: UUID
 
     @State private var list: TopTen?
+    @State private var owner: Profile?
     @State private var items: [TopTenItem] = []
     @State private var userVote = 0
     @State private var isBookmarked = false
@@ -40,6 +41,29 @@ struct TopTenDetailView: View {
                             }
                             .font(.custom("AvenirNext-Medium", size: 12))
                             .foregroundStyle(Theme.mutedText)
+
+                            NavigationLink {
+                                ProfileView(userId: list.ownerId, isSelf: isOwner)
+                            } label: {
+                                HStack(spacing: 10) {
+                                    ProfileBubble(profile: owner, size: 32)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(owner?.fullName ?? "Creator")
+                                            .font(.custom("AvenirNext-DemiBold", size: 14))
+                                            .foregroundStyle(Theme.ink)
+                                        if let username = owner?.username {
+                                            Text("@\(username)")
+                                                .font(.custom("AvenirNext-Medium", size: 12))
+                                                .foregroundStyle(Theme.mutedText)
+                                        }
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 12, weight: .semibold))
+                                        .foregroundStyle(Theme.mutedText)
+                                }
+                            }
+                            .buttonStyle(.plain)
                         }
                         .listRowBackground(Color.clear)
 
@@ -217,6 +241,9 @@ struct TopTenDetailView: View {
         do {
             list = try await session.lists.fetchList(id: listId)
             items = try await session.lists.fetchItems(for: listId)
+            if let ownerId = list?.ownerId {
+                owner = try? await session.profiles.fetchProfile(id: ownerId)
+            }
             if let uid = session.auth.uid {
                 userVote = try await session.lists.currentVote(userId: uid, topTenId: listId)
                 isBookmarked = try await session.lists.isBookmarked(userId: uid, topTenId: listId)

@@ -48,27 +48,36 @@ struct AppTextField: View {
 struct ProfileBubble: View {
     let profile: Profile?
     var size: CGFloat = 36
-    var action: () -> Void
+    var action: (() -> Void)? = nil
 
     var body: some View {
-        Button(action: action) {
-            Group {
-                if let urlString = profile?.avatarUrl, let url = URL(string: urlString) {
-                    AsyncImage(url: url) { image in
-                        image.resizable().scaledToFill()
-                    } placeholder: {
-                        initials
-                    }
-                } else {
+        Group {
+            if let action {
+                Button(action: action) { avatar }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Profile")
+            } else {
+                avatar
+                    .accessibilityLabel("Profile")
+            }
+        }
+    }
+
+    private var avatar: some View {
+        Group {
+            if let urlString = profile?.avatarUrl, let url = URL(string: urlString) {
+                AsyncImage(url: url) { image in
+                    image.resizable().scaledToFill()
+                } placeholder: {
                     initials
                 }
+            } else {
+                initials
             }
-            .frame(width: size, height: size)
-            .clipShape(Circle())
-            .overlay(Circle().strokeBorder(Theme.amber, lineWidth: 2))
         }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Profile")
+        .frame(width: size, height: size)
+        .clipShape(Circle())
+        .overlay(Circle().strokeBorder(Theme.amber, lineWidth: 2))
     }
 
     private var initials: some View {

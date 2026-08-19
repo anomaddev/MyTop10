@@ -40,8 +40,6 @@ targets:
         product: FirebaseAuth
       - package: firebase-ios-sdk
         product: FirebaseCore
-      - package: firebase-ios-sdk
-        product: FirebaseFunctions
       - package: supabase-swift
         product: Supabase
       - package: GoogleMobileAds
